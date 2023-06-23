@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Bracket } from 'react-tournament-bracket';
 import './TournamentTable.css'; // Import the CSS file for styling
 
-
 const TournamentTable = () => {
   const { id } = useParams();
   const [rootGame, setRootGame] = useState(null);
+  const [thirdPlaceGame, setThirdPlaceGame] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const TournamentTable = () => {
       .get(`http://localhost:3000/matchup/byTournament?tournamentId=${id}`)
       .then(response => {
         const matchups = response.data;
+        console.log(matchups);
         fetchParticipants(matchups);
       })
       .catch(error => {
@@ -40,6 +41,8 @@ const TournamentTable = () => {
 
         const games = constructGames(matchups, participants);
         setRootGame(games.find(game => game.name === 'F')); // find the game with phase 'F'
+        setThirdPlaceGame(games.find(game => game.name === 'F-3rd')); // find the game with phase 'F-3rd'
+        console.log(games);
         setLoading(false);
       })
       .catch(error => {
@@ -49,41 +52,39 @@ const TournamentTable = () => {
   };
 
   const constructGames = (matchups, participants) => {
-    const games = matchups
-      .filter(matchup => matchup.phase !== 'F-3rd')
-      .map(matchup => ({
-        id: matchup.id.toString(),
-        name: matchup.phase,
-        scheduled: Number(new Date()),
-        sides: {
-          home: {
-            team: {
-              id: matchup.fPId ? matchup.fPId.toString() : null,
-              name: getParticipantName(matchup.fPId, participants) || matchup.nextFP,
-            },
-            score: {
-              score: matchup.scoreFP,
-            },
-            seed: {
-              rank: 1,
-              sourceGame: matchup.nextFP ? { name: matchup.nextFP } : null,
-            },
+    const games = matchups.map(matchup => ({
+      id: matchup.id.toString(),
+      name: matchup.phase,
+      scheduled: Number(new Date()),
+      sides: {
+        home: {
+          team: {
+            id: matchup.fPId ? matchup.fPId.toString() : null,
+            name: getParticipantName(matchup.fPId, participants) || matchup.nextFP,
           },
-          visitor: {
-            team: {
-              id: matchup.sPId ? matchup.sPId.toString() : null,
-              name: getParticipantName(matchup.sPId, participants) || matchup.nextSP,
-            },
-            score: {
-              score: matchup.scoreSP,
-            },
-            seed: {
-              rank: 1,
-              sourceGame: matchup.nextSP ? { name: matchup.nextSP } : null,
-            },
+          score: {
+            score: matchup.scoreFP,
+          },
+          seed: {
+            rank: 1,
+            sourceGame: matchup.nextFP ? { name: matchup.nextFP } : null,
           },
         },
-      }));
+        visitor: {
+          team: {
+            id: matchup.sPId ? matchup.sPId.toString() : null,
+            name: getParticipantName(matchup.sPId, participants) || matchup.nextSP,
+          },
+          score: {
+            score: matchup.scoreSP,
+          },
+          seed: {
+            rank: 1,
+            sourceGame: matchup.nextSP ? { name: matchup.nextSP } : null,
+          },
+        },
+      },
+    }));
 
     // link the games based on nextFP and nextSP
     games.forEach(game => {
@@ -108,10 +109,14 @@ const TournamentTable = () => {
         <div className="spinner-container">
           <div className="spinner"></div>
         </div>
-      ) : rootGame ? (
-        <Bracket game={rootGame} />
-      ) : null}
+      ) : (
+        <>
+          {rootGame && <Bracket game={rootGame} />}
+          {thirdPlaceGame && <Bracket game={thirdPlaceGame} />}
+        </>
+      )}
     </div>
   );
-      };
+};
+
 export default TournamentTable;
