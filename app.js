@@ -21,9 +21,9 @@ app.use('/matchup', matchupRoutes);
 
 // sequelize.sync({ force: true }) // This is to ensure that the database is in sync with the models you've defined. In production, this is not commonly used.
 //     .then(() => {
-        app.listen(3000, () => console.log('Server is running on port 3000'));
-    // })
-    // .catch(err => console.log(err));
+app.listen(3000, () => console.log('Server is running on port 3000'));
+// })
+// .catch(err => console.log(err));
 
 const getAccessToken = async () => {
   const URL = `https://id.twitch.tv/oauth2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=client_credentials`
@@ -90,17 +90,3 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send({ message: err.message });
 });
-
-
-
-
-// app for creating game tournaments
-// using IGDB API
-//  - create a game tournament
-//  - add players to the tournament
-//  - add scores to the tournament
-//  - get the winner of the tournament
-//  - get the scores of the tournament
-//  - get the players of the tournament
-//  - get the game of the tournament
-//  - get the tournament

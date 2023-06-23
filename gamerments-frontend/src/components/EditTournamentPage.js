@@ -46,7 +46,7 @@ function EditTournamentPage() {
     let res;
     res = await axios.get(`http://localhost:3000/participant/byTournament/${id}`);
     const participantsNumber = res.data.length;
-  
+
     if (previousPhase === null) {
       if (participantsNumber === 2) {
         lastPhaseGenerated = "F";
@@ -76,8 +76,8 @@ function EditTournamentPage() {
         .catch(error => {
           console.log(error);
         });
-        
-      if(participantsNumber === 2) { 
+
+      if (participantsNumber === 2) {
         // Directly generate the final matchup for two participants
         await axios.post('http://localhost:3000/matchup', {
           tournamentId: id,
@@ -96,14 +96,14 @@ function EditTournamentPage() {
         default:
           phase = previousPhase;
       }
-  
+
       res = await axios.get(`http://localhost:3000/matchup/byTournamentAndStage`, {
         params: {
           tournamentId: id,
           phase,
         },
       });
-  
+
       if (phase.startsWith("RO16")) {
         lastPhaseGenerated = "QF";
       } else if (phase.startsWith("RO")) {
@@ -116,10 +116,10 @@ function EditTournamentPage() {
         return;  // we generated the final, no need to go further
       }
     }
-  
+
     let shuffledMatchups = shuffle(res.data);
     let matchups = chunk(shuffledMatchups, 2);
-  
+
     for (let i = 0; i < matchups.length; i++) {
       const matchup = matchups[i];
       let data;
@@ -158,7 +158,7 @@ function EditTournamentPage() {
       }
       setIsLoading(false);
     }
-  
+
     if (lastPhaseGenerated !== "F") {
       generateFixtures(lastPhaseGenerated + "-1");  // recursive call to keep generating the next phases
     }
@@ -171,12 +171,12 @@ function EditTournamentPage() {
   const storedToken = localStorage.getItem(`tournament-${id}-token`);
   if (storedToken !== tournament.token) {
     return (
-      <div>
+      <div className='container'>
         <label>
           Token:
           <input type="text" value={inputToken} onChange={(e) => setInputToken(e.target.value)} />
         </label>
-        <button onClick={checkToken}>Submit</button>
+        <button className='blueButton' onClick={checkToken}>Submit</button>
       </div>
     );
   }
@@ -199,7 +199,6 @@ function EditTournamentPage() {
         {participants.map((participant) => (
           <div key={participant.id}>
             <h2>{participant.name}</h2>
-            {/* Display more tournament details */}
           </div>
         ))}
       </div>

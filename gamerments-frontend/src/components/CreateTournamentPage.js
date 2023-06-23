@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // Updated this line
-import './CreateTournament.css';  // Assuming you keep your CSS in CreateTournament.css
+import { useNavigate } from 'react-router-dom';
+import './CreateTournament.css';
 
 function CreateTournament() {
   const [name, setName] = useState('');
@@ -10,7 +10,7 @@ function CreateTournament() {
   const [participants, setParticipants] = useState('');
   const [games, setGames] = useState([]);
   const [validGameSelected, setValidGameSelected] = useState(false);
-  const navigate = useNavigate();  // Updated this line
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

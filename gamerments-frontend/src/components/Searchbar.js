@@ -4,7 +4,7 @@ function SearchBar({ setTournaments }) {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    if(query === '') {
+    if (query === '') {
       fetch('http://localhost:3000/tournament/')
         .then(response => {
           if (!response.ok) {

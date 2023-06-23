@@ -53,8 +53,6 @@ const Matchup = sequelize.define('Matchup', {
     type: DataTypes.STRING,
     allowNull: true
   }
-}, {
-  // Other model options go here
 });
 
 module.exports = Matchup;

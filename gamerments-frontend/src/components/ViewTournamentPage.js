@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import "./Home.css";
+
 
 function ViewTournament() {
   const [tournament, setTournament] = useState(null);
 
-  useEffect(() => {
-    // Call API to fetch the tournament data and set it to the state
-    // You need to implement this part
-  }, []);
-
   return (
-    <div>
+    <div className='container'>
       {tournament ? (
         <div>
           <h2>{tournament.name}</h2>

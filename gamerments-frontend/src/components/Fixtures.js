@@ -8,7 +8,7 @@ function FixturesPage() {
   const { id } = useParams();
   const [matchups, setMatchups] = useState([]);
   const [participantNames, setParticipantNames] = useState({});
-  const [winnersFetched, setWinnersFetched] = useState(false); // New state to track winners data fetching
+  const [winnersFetched, setWinnersFetched] = useState(false);
   const { setTournament, tournament } = useContext(TournamentContext);
 
   useEffect(() => {
@@ -296,12 +296,14 @@ function FixturesPage() {
                 <p>{matchup.phase}: </p>
                 <p >{participantNames[matchup.fPId]}</p>
                 <input
+                  className='scoreBox'
                   type="number"
                   value={matchup.scoreFP}
                   onChange={(e) => handleScoreChange(matchup.id, Number(e.target.value), matchup.scoreSP)}
                 />
                 <p>vs</p>
                 <input
+                  className='scoreBox'
                   type="number"
                   value={matchup.scoreSP}
                   onChange={(e) => handleScoreChange(matchup.id, matchup.scoreFP, Number(e.target.value))}

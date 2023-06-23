@@ -24,16 +24,15 @@ function Home() {
       <h1>Welcome!</h1>
       <SearchBar setTournaments={setTournaments} />
       <div className="tournamentList">
-      {tournaments.length ? (
-        tournaments.map((tournament) => (
-          <div key={tournament.id}>
-            <h2><Link to={`/edit/${tournament.id}`}>{tournament.name}</Link></h2>
-            {/* Display more tournament details */}
-          </div>
-        ))
-      ) : (
-        <p style={{fontStyle: "italic", fontSize:"20px" }}>There are no tournaments with this name...</p>
-      )}
+        {tournaments.length ? (
+          tournaments.map((tournament) => (
+            <div key={tournament.id}>
+              <h2><Link to={`/edit/${tournament.id}`}>{tournament.name}</Link></h2>
+            </div>
+          ))
+        ) : (
+          <p style={{ fontStyle: "italic", fontSize: "20px" }}>There are no tournaments with this name...</p>
+        )}
       </div>
     </div>
   );

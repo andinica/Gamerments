@@ -5,10 +5,11 @@
 
 .container {
   text-align: center;
+  margin-top: 15px;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 header {
@@ -88,15 +89,22 @@ p {
 .tournamentList div {
   border: 1px solid black;
   border-top: 1px solid white;
-  
+
 }
 
 .tournamentList div:first-of-type {
   border: 1px solid black;
 }
-.tournamentList div:nth-child(odd){
+
+.tournamentList div:nth-child(odd) {
   background-color: lightcoral;
 }
-.tournamentList div:nth-child(even){
+
+.tournamentList div:nth-child(even) {
   background-color: lightseagreen;
+}
+
+.scoreBox {
+  width: 50px;
+  text-align: center;
 }

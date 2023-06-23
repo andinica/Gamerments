@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const participantController = require('../controllers/participantController.js');
 
 router.post('/', participantController.createParticipant);
@@ -11,8 +10,5 @@ router.get('/byTournament/:tournamentId', participantController.getParticipantsB
 router.get('/:id', participantController.getParticipant);
 router.get('/', participantController.getAllParticipants);
 router.delete('/deleteAll', participantController.deleteAll);
-
-
-
 
 module.exports = router;

@@ -11,7 +11,7 @@ const Participant = sequelize.define('Participant', {
   tournamentId: {
     type: DataTypes.INTEGER,
     references: {
-      model: Tournament, 
+      model: Tournament,
       key: 'id'
     }
   },
@@ -21,8 +21,6 @@ const Participant = sequelize.define('Participant', {
   final_position: {
     type: DataTypes.INTEGER
   }
-}, {
-  // Other model options go here
 });
 
 Participant.belongsTo(Tournament, { foreignKey: 'tournamentId' }); // Sets up a foreign key constraint
