@@ -31,7 +31,7 @@ function Home() {
             </div>
           ))
         ) : (
-          <p style={{ fontStyle: "italic", fontSize: "20px" }}>There are no tournaments with this name...</p>
+          <p style={{ fontStyle: "italic", fontSize: "20px" }}>There are no tournaments here...</p>
         )}
       </div>
     </div>
