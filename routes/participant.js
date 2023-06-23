@@ -10,6 +10,8 @@ router.get('/byTournamentAndPosition', participantController.getParticipantsByTo
 router.get('/byTournament/:tournamentId', participantController.getParticipantsByTournament);
 router.get('/:id', participantController.getParticipant);
 router.get('/', participantController.getAllParticipants);
+router.delete('/deleteAll', participantController.deleteAll);
+
 
 
 

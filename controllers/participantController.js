@@ -99,3 +99,12 @@ exports.updateParticipant = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+
+  exports.deleteAll = async (req, res) => {
+    try {
+      await Participant.destroy({ where: {}, truncate: true })
+      res.status(200).json({ message: 'All participants have been deleted.' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  };

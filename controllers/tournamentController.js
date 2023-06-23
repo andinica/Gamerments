@@ -69,3 +69,12 @@ exports.getTournamentsByName = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
   };
+
+  exports.deleteAll = async (req, res) => {
+    try {
+      await Tournament.destroy({ where: {}, truncate: true })
+      res.status(200).json({ message: 'All tournaments have been deleted.' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  };
