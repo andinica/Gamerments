@@ -1,0 +1,690 @@
+{
+	"info": {
+		"_postman_id": "59a1e3e4-5b36-4bf2-b851-26b02dbbb470",
+		"name": "ASE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15360126"
+	},
+	"item": [
+		{
+			"name": "TW",
+			"item": [
+				{
+					"name": "Twitch Auth",
+					"item": [
+						{
+							"name": "Get twitch token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://id.twitch.tv/oauth2/token?client_id=or1bhys10q7icjmzko1zmv1u7ensid&client_secret=tuf0l5r3w807qcgya7yerz32ucr8vj&grant_type=client_credentials",
+									"protocol": "https",
+									"host": [
+										"id",
+										"twitch",
+										"tv"
+									],
+									"path": [
+										"oauth2",
+										"token"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "or1bhys10q7icjmzko1zmv1u7ensid"
+										},
+										{
+											"key": "client_secret",
+											"value": "tuf0l5r3w807qcgya7yerz32ucr8vj"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "IGDB",
+					"item": [
+						{
+							"name": "Retrieve all game info by id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Client-ID",
+										"value": "or1bhys10q7icjmzko1zmv1u7ensid",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer b16jq8e5zp480xrclqxw51ajjv67lo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "fields name, cover.url; where id = 1942;"
+								},
+								"url": {
+									"raw": "https://api.igdb.com/v4/games",
+									"protocol": "https",
+									"host": [
+										"api",
+										"igdb",
+										"com"
+									],
+									"path": [
+										"v4",
+										"games"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get image (unique)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "images.igdb.com/igdb/image/upload/t_thumb/co1wyy.jpg",
+									"host": [
+										"images",
+										"igdb",
+										"com"
+									],
+									"path": [
+										"igdb",
+										"image",
+										"upload",
+										"t_thumb",
+										"co1wyy.jpg"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "API",
+					"item": [
+						{
+							"name": "tournament/",
+							"item": [
+								{
+									"name": "POST tournament/",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"ghf\",\r\n    \"game\": \"Cikkok\",\r\n    \"participants\": 8\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/tournament",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"tournament"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT tournament/:id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phase\":\"created\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/tournament/8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"tournament",
+												"8"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET tournament/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/tournament/56",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"tournament",
+												"56"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET tournament/",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/tournament/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"tournament",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET tournament/name/:name",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/tournament/name/Te",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"tournament",
+												"name",
+												"Te"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "matchup/",
+							"item": [
+								{
+									"name": "POST matchup/",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"fPId\": 1,\r\n    \"sPId\": 4,\r\n    \"phase\": \"RO321\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/matchup",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST matchup/batch",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"fPId\": 3,\r\n    \"sPId\": 4,\r\n    \"phase\": \"QF2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/matchup/batch",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"batch"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE matchup",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/deleteAll",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"deleteAll"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT matchup/:id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phase\": \"F-3rd\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/matchup/3010",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"3010"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET matchup/:id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/19",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"19"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET matchup/numberofMatchups?",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/numberOfMatchups?tournamentId=8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"numberOfMatchups"
+											],
+											"query": [
+												{
+													"key": "tournamentId",
+													"value": "8"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET matchup/byTournament",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/byTournament?tournamentId=56",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"byTournament"
+											],
+											"query": [
+												{
+													"key": "tournamentId",
+													"value": "56"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET matchup/ByTournamentAndStage",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/byTournamentAndStage?tournamentId=55&phase=F",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"byTournamentAndStage"
+											],
+											"query": [
+												{
+													"key": "tournamentId",
+													"value": "55"
+												},
+												{
+													"key": "phase",
+													"value": "F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET matchup/ByTournamentAndExactStage",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/matchup/byTournamentAndExactStage?tournamentId=21&phase=F",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"matchup",
+												"byTournamentAndExactStage"
+											],
+											"query": [
+												{
+													"key": "tournamentId",
+													"value": "21"
+												},
+												{
+													"key": "phase",
+													"value": "F"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "participant/",
+							"item": [
+								{
+									"name": "PUT participant/:id",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"final_position\":1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/participant/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST participant/",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"name\": \"player 1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/participant/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET participant/:id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"My Tournament\",\r\n    \"game\": \"Game 1\",\r\n    \"participants\": \"Participant 1, Participant 2, Participant 3\"\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost:3000/participant/6",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												"6"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET participant/",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"My Tournament\",\r\n    \"game\": \"Game 1\",\r\n    \"participants\": \"Participant 1, Participant 2, Participant 3\"\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost:3000/participant/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET participant/byTournament/:tournamentId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/participant/byTournament/56",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												"byTournament",
+												"56"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET participant/byTournament/:tournamentId Copy",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/participant/byTournamentAndPosition?tournamentId=49&final_position=1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"participant",
+												"byTournamentAndPosition"
+											],
+											"query": [
+												{
+													"key": "tournamentId",
+													"value": "49"
+												},
+												{
+													"key": "final_position",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Search game by name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/searchGames?name=Witcher 3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"searchGames"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Witcher 3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

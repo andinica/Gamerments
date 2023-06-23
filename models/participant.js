@@ -8,7 +8,7 @@ const Participant = sequelize.define('Participant', {
     autoIncrement: true,
     primaryKey: true
   },
-  tournament_id: {
+  tournamentId: {
     type: DataTypes.INTEGER,
     references: {
       model: Tournament, 
@@ -25,6 +25,6 @@ const Participant = sequelize.define('Participant', {
   // Other model options go here
 });
 
-Participant.belongsTo(Tournament, { foreignKey: 'tournament_id' }); // Sets up a foreign key constraint
+Participant.belongsTo(Tournament, { foreignKey: 'tournamentId' }); // Sets up a foreign key constraint
 
 module.exports = Participant;

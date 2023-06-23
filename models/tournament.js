@@ -18,6 +18,9 @@ const Tournament = sequelize.define('Tournament', {
   },
   token: {
     type: DataTypes.STRING
+  },
+  phase: {
+    type: DataTypes.STRING
   }
 }, {
   // Other model options go here

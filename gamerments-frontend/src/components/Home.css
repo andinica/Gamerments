@@ -1,0 +1,102 @@
+.red {
+  color: white;
+  background-color: red;
+}
+
+.container {
+  text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+header {
+  background-color: #292626;
+}
+
+header a {
+  vertical-align: middle;
+  font-size: 22px;
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+}
+
+header button {
+  background-color: #d93311bd;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  border: 2px solid;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+header img {
+  width: 150px;
+  height: 70px;
+  margin: 10px 0px 5px 0px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+p {
+  font-size: 30px;
+  font-style: italic;
+}
+
+.blueButton {
+  font-size: 18px;
+  color: white;
+  background-color: cornflowerblue;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.redButton {
+  font-size: 18px;
+  color: white;
+  background-color: red;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+
+.tournamentList {
+  margin: 0 auto;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+.tournamentList a {
+  color: white;
+  text-decoration: none;
+
+}
+
+.tournamentList div {
+  border: 1px solid black;
+  border-top: 1px solid white;
+  
+}
+
+.tournamentList div:first-of-type {
+  border: 1px solid black;
+}
+.tournamentList div:nth-child(odd){
+  background-color: lightcoral;
+}
+.tournamentList div:nth-child(even){
+  background-color: lightseagreen;
+}

@@ -1,25 +1,29 @@
-const express = require('express')
+const express = require('express');
 const axios = require('axios');
-const app = express()
+const app = express();
 const port = 3000
 const sequelize = require('./db/db.js');
+const cors = require('cors');
 
 
-const CLIENT_ID = "or1bhys10q7icjmzko1zmv1u7ensid"
-const CLIENT_SECRET = "tuf0l5r3w807qcgya7yerz32ucr8vj"
+const CLIENT_ID = "or1bhys10q7icjmzko1zmv1u7ensid";
+const CLIENT_SECRET = "tuf0l5r3w807qcgya7yerz32ucr8vj";
 
 const tournamentRoutes = require('./routes/tournament.js');
 const participantRoutes = require('./routes/participant.js');
+const matchupRoutes = require('./routes/matchup.js');
 
 app.use(express.json());
+app.use(cors());
 app.use('/tournament', tournamentRoutes);
 app.use('/participant', participantRoutes);
+app.use('/matchup', matchupRoutes);
 
-// sequelize.sync({ alter: true }) // This is to ensure that the database is in sync with the models you've defined. In production, this is not commonly used.
+// sequelize.sync({ force: true }) // This is to ensure that the database is in sync with the models you've defined. In production, this is not commonly used.
 //     .then(() => {
         app.listen(3000, () => console.log('Server is running on port 3000'));
-//     })
-//     .catch(err => console.log(err));
+    // })
+    // .catch(err => console.log(err));
 
 const getAccessToken = async () => {
   const URL = `https://id.twitch.tv/oauth2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=client_credentials`
