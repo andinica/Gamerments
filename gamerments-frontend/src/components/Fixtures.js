@@ -96,6 +96,7 @@ function FixturesPage() {
     try {
       const validScores = validateScores();
       if (validScores) {
+        await saveScores();
         const finalMatchup = matchups.find(matchup => matchup.phase === 'F');
         const thirdPlaceMatchup = matchups.find(matchup => matchup.phase === 'F-3rd');
 
@@ -130,6 +131,7 @@ function FixturesPage() {
   const advanceToNextPhase = async () => {
     const validScores = validateScores();
     if (validScores) {
+      await saveScores();
       const winners = matchups.reduce((winnersMap, matchup) => {
         const winnerId = matchup.scoreFP > matchup.scoreSP ? matchup.fPId : matchup.sPId;
         winnersMap[matchup.phase] = winnerId;
